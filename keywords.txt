@@ -25,6 +25,8 @@ update	KEYWORD2
 slower	KEYWORD2
 faster	KEYWORD2
 get_progress	KEYWORD2
+set_no_fade	KEYWORD2
+get_no_fade	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

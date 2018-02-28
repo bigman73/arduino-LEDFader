@@ -159,14 +159,29 @@ bool LEDFader::update() {
     return false;
   }
 
-  // Move color to where it should be
-  int color_diff = to_color - color;
-  int increment = round(color_diff * percent);
+  if (no_fade) {
+	  set_value(color);
+  } else {
+	// Move color to where it should be
+	int color_diff = to_color - color;
+	int increment = round(color_diff * percent);
 
-  set_value(color + increment);
+	set_value(color + increment);
+  }
 
   // Update time and finish
   duration -= time_diff;
   last_step_time = millis();
   return true;
+}
+
+
+// Set the no fade mode - a constant value from start to end
+void LEDFader::set_no_fade(bool no_fade_mode) {
+	no_fade = no_fade_mode;
+}
+	
+// Return the no fade mode
+bool LEDFader::get_no_fade() {
+	return no_fade;
 }

@@ -3,6 +3,8 @@
  *
  *  Created on: Sep 24, 2013
  *      Author: jeremy
+ *  Updated on: Feb 28, 2018
+ *      Author: Yuval Naveh
  */
 
 #include "Arduino.h"
@@ -27,6 +29,7 @@ private:
   unsigned int duration;
   float percent_done;
   curve_function curve;
+  bool no_fade;
 
   public:
 
@@ -55,7 +58,6 @@ private:
     // Fade an LED to a PWM value over a duration of time (milliseconds)
     void fade(uint8_t pwm, unsigned int time);
 
-
     // Returns TRUE if there is an active fade process
     bool is_fading();
 
@@ -74,6 +76,12 @@ private:
 
     // Returns how much of the fade is complete in a percentage between 0 - 100
     uint8_t get_progress();
+	
+	// Set the no fade mode - a constant value from start to end
+	void set_no_fade(bool no_fade_mode = true);
+	
+	// Return the no fade mode
+	bool get_no_fade();
 };
 
 #endif /* LEDFader_H_ */
